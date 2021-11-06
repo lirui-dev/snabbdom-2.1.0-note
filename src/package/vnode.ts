@@ -14,10 +14,10 @@ export type Key = string | number
 export interface VNode {
   sel: string | undefined; // selector
   data: VNodeData | undefined; // 属性、样式、事件等数据
-  children: Array<VNode | string> | undefined; // 所有子节点
-  elm: Node | undefined; // 元素（element）节点
-  text: string | undefined; // 文本（text）节点
-  key: Key | undefined; // 唯一标识
+  children: Array<VNode | string> | undefined; // 子节点数组（与 text 互斥）
+  elm: Node | undefined; // DOM 节点
+  text: string | undefined; // 文本内容（与 children 互斥）
+  key: Key | undefined; // 节点唯一标识：与 Vue v-for 指令设置 key 的目的相同，用于在 Diff 时识别准确的目标节点
 }
 
 // 上面的 VNode.data 数据模型
